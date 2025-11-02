@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced DOM Access</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .info {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+    <form name="loginForm">
+        <!-- This form can be accessed using document.forms["loginForm"] -->
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+    </form>
+
+    <img src="https://via.placeholder.com/100" alt="Sample Image" />
+    <img src="https://via.placeholder.com/80" alt="Sample Image 2" />
+
+
+    <div>
+    <a href="https://example.com">Example Link 1</a>
+    <a>No href here</a>
+    </div>
+
+    
+
+    <script>
+        // document.forms["formName"]
+        // Accessing form by its name attribute
+        // When your page has multiple forms and you want to access one specifically by name instead of id.
+        const form = document.forms["loginForm"];
+        form.style.border = "2px dashed blue";  // Highlight form border
+
+
+
+        // document.images
+        // Returns a live HTMLCollection of all <img> elements in the document.
+        const imgs = document.images;
+        imgs[0].style.border = "2px solid green";     // Add border to first image
+        imgs[1].style.border = "2px solid orange";    // Add border to second image
+
+
+
+        // document.links
+        // Returns all <a> elements that have an href attribute.
+        // Filter only clickable links (ignores <a> tags without href).
+        const links = document.links;
+        links[0].style.color = "red";                 // Only selects <a> with href, so only first <a> is styled
+
+
+
+        // document.body: Gets the content part of the document.
+        // document.head: Gets the metadata and script/style tags section.
+        // Access structural parts of the page
+        document.body.style.backgroundColor = "skyblue";  // skyblue background for body
+        document.head.style.fontFamily = "Courier New";   // Font style for head (applied indirectly)
+
+
+
+        // document.documentElement
+        // Returns the root element of the document (<html> tag).
+        // Used for document-wide properties like scrolling or setting global styles.
+        const root = document.documentElement;
+        root.style.scrollBehavior = "smooth";  // Enable smooth scroll for whole page
+    
+    </script>
+
+</body>
+</html>

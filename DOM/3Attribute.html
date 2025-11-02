@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Attribute Manipulation</title>
+  <style>
+    img {
+      margin: 20px 0;
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+
+    <h2 id="mainTitle" title="This is a heading">Welcome</h2>
+
+    <img id="image" src="https://via.placeholder.com/150" alt="Placeholder">
+
+    <button onclick="manipulateAttributes()">Manipulate Attributes</button>
+
+    <p id="output"></p>
+
+    <script>
+
+        function manipulateAttributes() {
+            const title = document.getElementById("mainTitle");
+            const img = document.getElementById("image");
+            const output = document.getElementById("output");
+
+
+            // getAttribute
+            // Retrieves the value of the specified attribute.
+            // Useful when you want to read the current state of an attribute (like href, src, alt, title, etc.).
+            // Reads the title attribute from <h2>
+            let currentTitle = title.getAttribute("title");
+            output.innerHTML += `🔍 getAttribute: ${currentTitle}<br>`;
+
+
+            // setAttribute
+            // Sets a new value for an attribute or adds it if it doesn’t exist.
+            // Use this when you want to change element properties dynamically (like changing image src, setting alt, href, width, etc.).
+            // Updates alt text and sets a new width to the image
+            img.setAttribute("alt", "Updated Image Description");
+            img.setAttribute("width", "200");
+            output.innerHTML += `🛠️ setAttribute: Changed image alt & width<br>`;
+
+
+            // hasAttribute
+            // Checks if the specified attribute exists on the element.
+            // Use this for conditional logic, e.g., check if an element has disabled, checked, required, etc., before performing an action.
+            //  Returns true if the image has the alt attribute
+            let hasAlt = img.hasAttribute("alt");
+            output.innerHTML += `✅ hasAttribute 'alt': ${hasAlt}<br>`;
+
+
+            // removeAttribute
+            // Completely removes the specified attribute from the element.
+            // Use it to reset or clean up elements, e.g., remove title from a heading.
+            // Removes the tooltip (title attribute) from the <h2> tag
+            title.removeAttribute("title");
+            output.innerHTML += `❌ removeAttribute: Removed 'title' from h2<br>`;
+        }
+        
+    </script>
+
+</body>
+</html>

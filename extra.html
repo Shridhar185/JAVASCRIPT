@@ -1,0 +1,65 @@
+
+<script>
+    //arrow function 
+     //calc is functionname as variable
+    const calc=(a,b)=>{           
+        console.log(a*b)
+    }
+    calc(30,4)
+
+    const vowel=(str)=>{
+        let count=0
+        for(const ch of str){
+            console.log(ch)   //print character wise
+            if(ch==='a'||ch==='e'||ch==='i'||ch==='o'||ch==='u'){
+                count+=1;
+            }
+        }
+        console.log("vowels: ",count)
+    }
+    vowel("shridhar")
+
+    //toUpperCase()--->it is function
+    //arr1.toUpperCase()--->it is method
+    //higner order function  are those which takes fucntion as parameter or return function
+
+    //foreach loop has callback function 
+    let arr1=["india","japan",'usa']
+    arr1.forEach(function (item,idx,arr1){  //can take each item value,index value,array content 
+        console.log(item.toUpperCase(),idx,arr1)
+    })
+
+    let arr=[2,3,5,"ram",45]
+    arr.forEach((val)=>{   
+        console.log(val)
+    })
+
+
+    //map is higher order function
+    //map method returns new aray with provided function instrucitons
+     let arr2=[45,23,45,23,23,231,12,32]
+     let newarr=arr2.map((val)=>{
+        return val*val
+     })
+     console.log(newarr)
+
+     //filer is higher order function
+     //filer retuns new array with specified conditions which are true 
+      let newarr1=arr2.filter((val)=>{
+        return val%2 !==0                 //it gives only odd numbers 
+      })
+      console.log("odd values: ",newarr1)
+
+      //reduce is higher order function
+      //reduce used to return single value by doing some operations in function
+      //takes two parameters at start, res->is 1st element and item->is 2nd element
+      let result=arr2.reduce((res,item)=>{
+        return res+item
+      })
+      console.log('sum: ',result)
+      let big=arr2.reduce((prev,curr)=>{
+        return prev>curr?prev:curr
+      })
+      console.log("largest: ",big)
+      
+</script>

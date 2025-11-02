@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>classList Methods</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+
+    .rounded {
+      border-radius: 10px;
+      padding: 10px;
+      border: 1px solid gray;
+    }
+  </style>
+</head>
+<body>
+
+    <h2 id="text">Hello, DOM classList!</h2>
+
+    <button onclick="addHighlight()">Add Highlight</button>
+    <button onclick="removeHighlight()">Remove Highlight</button>
+    <button onclick="toggleRounded()">Toggle Rounded</button>
+    <button onclick="checkHighlight()">Check Highlight</button>
+
+    <script>
+        const text = document.getElementById("text");
+        // The classList property is used to work with the CSS classes of an HTML element in a clean and easy way.
+        // Adds the class 'highlight'
+        function addHighlight() {
+            text.classList.add("highlight");
+        }
+
+        // Removes the class 'highlight'
+        function removeHighlight() {
+            text.classList.remove("highlight");
+        }
+
+        // Toggles the class 'rounded'
+        function toggleRounded() {
+            text.classList.toggle("rounded");
+        }
+
+        // Checks if 'highlight' class exists
+        function checkHighlight() {
+            if (text.classList.contains("highlight")) {
+                alert("Highlight class is present");
+            } else {
+                alert("Highlight class is NOT present");
+            }
+        }
+    </script>
+
+</body>
+</html>

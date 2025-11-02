@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+
+
+
+
+
+
+// A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+// It acts as a placeholder for a value that will be available in the future.
+// Promises help write cleaner, more manageable async code compared to callbacks.
+
+
+// Promise States
+// 1. Pending   → Initial state; the async operation is still in progress.
+// 2. Fulfilled → Operation completed successfully with a result.
+// 3. Rejected  → Operation failed with an error (reason for failure).
+
+
+// Creating a Promise
+// Use the Promise constructor with an executor function.
+// The executor takes two parameters: resolve and reject.
+// - Call resolve(value) if the async task succeeds.
+// - Call reject(error) if the async task fails.
+
+
+// Consuming a Promise
+// - Use .then() to handle the fulfilled state (success).
+// - Use .catch() to handle the rejected state (error).
+// - Use .finally() to run code after the promise settles (success or failure).
+// - Both .then() and .catch() return new promises and can be chained.
+
+
+// Promise Chaining
+// Promise chaining allows multiple asynchronous tasks to run one after another using .then()
+// Each .then() returns a new promise, allowing sequential execution.
+
+ 
+// Advantages of Promises over Callbacks
+// Avoid callback hell by chaining .then() instead of nested callbacks.
+// Easier error handling with .catch() in one place.
+// More readable and maintainable asynchronous code.
+
+
+// Disadvantages of Promises
+// Chaining too many .then() blocks can still be messy.
+// Doesn't cancel a pending operation once started.
+// Need to understand promise flow to handle properly.
+// Errors can be swallowed if .catch() is forgotten.
+// Not supported in very old browsers without polyfills.
+
+
+
+
+// Creating a Promise
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;                        // Change this to true to simulate a successful operation
+
+  if (success) {
+    resolve("Operation successful!");
+  } else {
+    reject("Something went wrong.");
+  }
+});
+
+// Consuming the Promise
+myPromise
+  .then((result) => {
+    console.log("✅ Success:", result);      // ✅ Success: Operation successful!
+  })
+  .catch((error) => {
+    console.log("❌ Error:", error);         // ❌ Error: Something went wrong.
+  })
+  .finally(() => {
+    console.log("🔁 Promise completed.");    // 🔁 Promise completed.
+  });
+
+
+
+
+
+
+
+
+
+
+// Simple timer function returning a Promise that resolves after given milliseconds
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`Waited for ${ms} milliseconds`);
+    }, ms);
+  });
+}
+
+// Using the timer Promise
+wait(2000)
+  .then((message) => {
+    console.log(message);  // Output after 2 seconds: "Waited for 2000 milliseconds"
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Promise chaining: run getData sequentially for each id
+const getData = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("data:", id);          // Simulate fetching data for given id
+      resolve("data fetched");           // Resolve after 1 second
+    }, 1000);
+  });
+};
+
+// Chaining promises using then() and each then() waits for the previous getData() to finish
+getData(1)
+  .then(() => getData(2))               // Wait for getData(1)
+  .then(() => getData(3))               // Wait for getData(2)
+  .then(() => getData(4))               // Wait for getData(3)
+  .then((res) => console.log(res))      // Log final resolved value
+  .catch((err) => console.log(err));    // Handle any error in the chain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+</script>
+</html>

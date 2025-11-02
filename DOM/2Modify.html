@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Content Manipulation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .box {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-left: 4px solid gray;
+    }
+    #container {
+      background-color: #e0ffe0;
+      padding: 15px;
+      border: 2px dashed green;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+    <h1 id="mainTitle">Original Title</h1>
+    <p id="textPara1">This is a paragraph.</p>
+    <p id="textPara2">This is a paragraph.</p>
+    <p id="textPara3">This is a paragraph.</p>
+    <br>
+    <div id="container">
+        <h2>Container (for append, prepend, insertAdjacentHTML)</h2>
+    </div>
+
+
+    <script>
+
+        const title = document.getElementById("mainTitle");
+        const para1 = document.getElementById("textPara1");
+        const para2 = document.getElementById("textPara2");
+        const para3 = document.getElementById("textPara3");
+
+        const box = document.getElementById("htmlBox");
+        const container = document.getElementById("container");
+
+        // innerText - Sets or gets only the visible *rendered* text of an element (ignores HTML tags).
+        title.innerText = "Updated Title via innerText";
+
+        // textContent - Gets or sets all text content (including hidden), ignores HTML tags.
+        // It will display tags as plain text, not render them.
+        para1.textContent = "Updated with textContent <b>not bold</b>";
+
+        // innerHTML - Gets or sets the full HTML content inside the element. Parses tags.
+        para2.innerHTML = "Updated with innerHTML <b>bold</b>";
+    
+        
+        // outerHTML - replaces entire element with new HTML content
+        para3.outerHTML = `<div class="box">outerHTML: This <b>entire</b> element was replaced!</div>`;
+
+
+
+
+        // append() - Add new content at the end of the container
+        const newPara = document.createElement("p");
+        newPara.textContent = "➕ Appended paragraph.";
+        container.append(newPara);
+
+        // prepend() - Add new content at the beginning of the container
+        const firstPara = document.createElement("p");
+        firstPara.textContent = "🔼 Prepended paragraph.";
+        container.prepend(firstPara);
+
+        // insertAdjacentHTML - Insert HTML at a specified position
+        container.insertAdjacentHTML("beforeend", "<p>📌 <b>Inserted with insertAdjacentHTML</b></p>");
+
+  </script>
+
+</body>
+</html>

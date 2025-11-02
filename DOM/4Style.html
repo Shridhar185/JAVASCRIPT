@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Style Manipulation</title>
+  <style>
+    .box {
+      width: 150px;
+      height: 100px;
+      background-color: lightgray;
+      margin: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+    <h2 id="heading">This is a Heading</h2>
+    <div id="colorBox" class="box">Box Content</div>
+    <button onclick="changeStyle()">Change Style</button>
+    <button onclick="resetStyle()">Reset Style</button>
+
+    <script>
+        function changeStyle() {
+            const heading = document.getElementById("heading");
+            const box = document.getElementById("colorBox");
+
+            // Heading styles
+            heading.style.color = "blue";                     // Change text color
+            heading.style.fontWeight = "bold";                // Make text bold
+
+            // Box styles
+            box.style.backgroundColor = "orange";             // Add background color
+            box.style.border = "2px dashed green";            // Add border
+            box.style.padding = "20px";                       // Add padding and margin
+            box.style.marginTop = "20px";
+            box.style.width = "200px";
+            box.style.height = "150px";
+            box.style.borderRadius = "10px";                  // Add rounded corners
+            box.style.boxShadow = "3px 3px 8px gray";         // Add shadow
+        }
+
+        function resetStyle() {
+            const heading = document.getElementById("heading");
+            const box = document.getElementById("colorBox");
+
+            // Reset heading styles
+            heading.style.color = "";
+            heading.style.fontWeight = "";
+
+            // Reset box styles
+            box.style.backgroundColor = "";
+            box.style.border = "";
+            box.style.padding = "";
+            box.style.marginTop = "";
+            box.style.width = "";
+            box.style.height = "";
+            box.style.borderRadius = "";
+            box.style.boxShadow = "";
+        }
+    </script>
+
+</body>
+</html>

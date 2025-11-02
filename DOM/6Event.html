@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DOM Event Handling</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .box {
+      padding: 10px;
+      border: 1px solid gray;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+    <h2 id="heading">Event Handling Example</h2>
+
+    <button id="clickBtn">Click Me</button>
+    <p id="clickMsg" class="box">Click message will appear here</p>
+
+    <input type="text" id="textInput" placeholder="Type something..." />
+    <p id="inputMsg" class="box">Input message will appear here</p>
+
+    <div id="hoverBox" class="box">Hover over this box</div>
+    <p id="hoverMsg" class="box">Hover message will appear here</p>
+
+    <script>
+
+        // click event - when user clicks the button
+        document.getElementById("clickBtn").addEventListener("click", function () {
+            document.getElementById("clickMsg").innerText = "✅ Button was clicked!";
+        });
+
+        // input event - fires when user types into input field
+        document.getElementById("textInput").addEventListener("input", function (event) {
+            document.getElementById("inputMsg").innerText = "You typed: " + event.target.value;
+        });
+
+        // mouseover event - triggers when mouse hovers over the element
+        document.getElementById("hoverBox").addEventListener("mouseover", function () {
+            document.getElementById("hoverMsg").innerText = "👋 You hovered over the box!";
+        });
+
+        // mouseout event - when mouse leaves the element
+        document.getElementById("hoverBox").addEventListener("mouseout", function () {
+            document.getElementById("hoverMsg").innerText = "❌ You left the box.";
+        });
+        
+    </script>
+
+</body>
+</html>

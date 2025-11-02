@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toggle Text</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    #myText {
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+    <button id="toggleBtn">Hide Text</button>
+    <p id="myText">This is a toggleable text!</p>
+
+    <script>
+        const btn = document.getElementById("toggleBtn");
+        const text = document.getElementById("myText");
+
+        btn.addEventListener("click", function () {
+        if (text.style.display === "none") {
+            text.style.display = "block";
+            btn.innerText = "Hide Text";
+        } else {
+            text.style.display = "none";
+            btn.innerText = "Show Text";
+        }
+        });
+
+    </script>
+</body>
+</html>

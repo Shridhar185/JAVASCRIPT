@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Click Counter</title>
+
+  <style>
+    /* Center content using Flexbox */
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;  /* Vertical center */
+      align-items: center;      /* Horizontal center */
+      height: 100vh;            /* Full viewport height */
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: aqua;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+    <button id="countBtn">Click Me</button>
+    <p>Clicks: <span id="clickCount">0</span></p>
+
+    <script>
+        let count = 0;
+        document.getElementById("countBtn").addEventListener("click", function () {
+        count++;
+        document.getElementById("clickCount").innerText = count;
+        });
+    </script>
+
+</body>
+</html>

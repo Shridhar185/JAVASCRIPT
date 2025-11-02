@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+
+
+
+
+
+// async
+// async is a keyword used to define a function that always returns a Promise, even if you don’t explicitly return one.
+// It allows you to write asynchronous code that looks and behaves more like synchronous (normal) code.
+// async/await is built on top of Promises, making asynchronous code easier to read and maintain.
+
+// await Keyword
+// Can only be used inside async functions
+// Pauses the execution of the function until the Promise is resolved/rejected
+// Makes the function wait for the Promise and returns the resolved value
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 1. For a regular function, we need to manually return a Promise.
+// 2. The function is declared with async, so it will return a Promise.
+// The value "Hello" is wrapped in a resolved Promise like this:
+// myFunction() returns a Promise.
+// .then() waits for the Promise to resolve and gives you the result.
+// result => { console.log(result); } is a function that prints the result.
+
+
+function myFunction() {
+  return Promise.resolve("Hello1");
+}
+// OR
+async function myFunction() {
+  return "Hello2";
+}
+myFunction().then(result => {
+  console.log(result);              // Output: Hello2 (second function overwrites the first one)
+});
+
+
+
+
+
+
+
+// Asynchronous function using async/await
+// The 'await' keyword pauses execution until the Promise is resolved
+
+async function fetchData() {
+  let response = await new Promise((resolve) => {
+    setTimeout(() => resolve("Data received"), 2000);
+  });
+
+  console.log(response);          // Data received (after 2 seconds)
+}
+
+fetchData();
+
+ 
+
+
+
+
+
+// Handling errors in async functions using try-catch with await
+/* 
+async function getData() {
+  try {
+    let result = await Promise.reject("Something went wrong");
+    console.log(result);
+  } catch (error) {
+    console.log("Error:", error); // Error: Something went wrong
+  }
+}
+
+getData();
+ */
+
+
+
+
+
+
+
+// Fetching data for 100 IDs sequentially using async/await and Promises
+function getData(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("data:", id);
+      resolve("data fetched");
+    }, 10);
+  });
+};  
+
+async function fetchAllData(){
+  try {
+    for (let id = 1; id <= 100; id++) {
+      await getData(id);            // Wait for each getData call to complete before next
+    }
+    console.log("All data fetched successfully!");
+  } catch (err) {
+    console.error("Error:", err);   // Handle any error during fetching
+  }
+};
+
+fetchAllData();
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// fetch() is a built-in browser API used to make HTTP requests (like GET, POST, etc.) to servers.
+// It returns a Promise, which resolves to a Response object.
+
+// Response Handling
+// response.json() – parses the response as JSON
+// response.text() – returns raw text
+// response.blob() – returns binary large object (useful for files/images)
+// response.status – HTTP status code (e.g., 200, 404)
+// response.ok – true if status is 200-299
+
+
+
+// Limitations of fetch()
+// - Doesn't reject on HTTP errors like 404 or 500 (you must check manually)
+// - Requires additional steps to parse data (e.g., res.json())
+// - Needs try/catch for error handling in async/await
+
+
+
+
+ 
+
+
+
+
+// await tells JavaScript to wait until the fetch Promise resolves (i.e., until the response is received).
+// The response (not the actual data yet!) is stored in the variable res.
+// Now we’re calling res.json() to extract the actual JSON data from the response.
+// res.json() is a method on the Response object returned by fetch().
+// This also returns a Promise, so we use await again.
+// The JSON string is parsed into a JavaScript object and stored in data.
+
+
+async function getData() {
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    const data = await res.json();
+    console.log(data); // Logs the parsed JSON data
+  } catch (err) {
+    console.error("Error:", err); // Logs any network or parsing error
+  }
+}
+
+getData();
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

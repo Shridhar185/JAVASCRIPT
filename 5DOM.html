@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+
+
+// DOM
+// DOM (Document Object Model) is a programming interface for HTML and XML documents.
+// It represents the structure of a webpage as a tree of objects (nodes).
+// You can access, modify, add, or remove elements on the page using JavaScript.
+
+
+
+
+
+// --------------- ACCESSING DOM ELEMENTS ------------------
+document.getElementById("id");                                  // Selects one element by ID (returns Element)
+document.getElementsByClassName("class");                       // Selects all elements with class (HTMLCollection)
+document.getElementsByTagName("tag");                           // Selects all elements with a specific tag (HTMLCollection)
+document.querySelector("selector");                             // Selects the first element that matches the CSS selector
+document.querySelectorAll("selector");                          // Selects all elements matching the CSS selector (NodeList)
+document.forms["formName"];                                     // Access a specific form by name from document.forms
+document.links;                                                 // Gets all <a> elements with an href
+document.images;                                                // Gets all <img> elements in the document
+document.scripts;                                               // Gets all <script> elements in the document
+document.body;                                                  // Accesses the <body> element
+document.head;                                                  // Accesses the <head> element
+document.documentElement;                                       // Accesses the root <html> element
+document.activeElement;                                         // Returns the element that currently has focus
+
+
+// ------------------- CHANGING CONTENT --------------------
+element = document.getElementById("demo")                       // Selects the element with ID "demo"
+element.innerText = "New text!";                                // Set only visible text (ignores HTML)
+element.innerHTML = "<b>Bold</b>";                              // Set HTML content (includes tags)
+element.textContent = "Plain text";                             // Safer than innerHTML, no parsing
+element.innerHTML += "<p>More</p>";                             // Append HTML content
+element.outerHTML = "<div>Replaced</div>";                      // Replaces the entire element
+
+
+// ----------------- CHANGING ATTRIBUTES -------------------
+element.setAttribute("class", "my-class");                      // Sets class attribute
+element.getAttribute("href");                                   // Returns value of href attribute
+element.removeAttribute("disabled");                            // Removes disabled attribute
+element.hasAttribute("checked");                                // Checks if attribute exists
+element.attributes;                                             // Returns all attributes (NamedNodeMap)
+
+
+// -------------------- CHANGING STYLES ---------------------
+element.style.backgroundColor = "yellow";                       // Inline style update
+element.style.cssText = "color: red; font-size: 18px;";         // Apply multiple styles at once
+getComputedStyle(element).color;                                // Get the computed style from browser (read-only)
+
+
+// ------------- CREATING & ADDING ELEMENTS -----------------
+const newDiv = document.createElement("div");                   // Create a new div
+newDiv.innerText = "I'm new!";
+document.body.appendChild(newDiv);                              // Add to end of body
+parentElement.appendChild(childElement);                        // Add inside another element
+parentElement.insertBefore(newNode, referenceNode);             // Insert before specific child
+element.insertAdjacentHTML('beforeend', "<p>Inserted</p>");     // Add HTML at specific position (beforeend, afterend, etc.)
+
+
+// -------------------- REMOVING ELEMENTS -------------------
+const element = document.getElementById("removeMe");
+element.remove();                                               // Removes the element (modern)
+element.parentNode.removeChild(element);                        // Old way to remove child
+while (element.firstChild) {
+  element.removeChild(element.firstChild);                      // Remove all children (clear content)
+}
+
+
+// -------------------- EVENT HANDLING ----------------------
+const btn = document.getElementById("btn");
+btn.addEventListener("click", function () {                     // Attach event listener
+  alert("Button clicked!");
+});
+btn.removeEventListener("click", handler);                      // Remove an attached event
+
+// Common Event Types:
+// click, dblclick, mouseover, mouseout, mousemove
+// keydown, keyup, focus, blur, submit, change, input
+
+
+// --------------------- DOM TRAVERSAL ----------------------
+element.parentNode;                                             // Access parent element
+element.children;                                               // HTMLCollection of child elements
+element.childNodes;                                             // Includes all child nodes (text, comment, etc.)
+element.firstChild;                                             // First child node (may be a text node)
+element.firstElementChild;                                      // First child that is an element
+element.lastChild;                                              // Last child node
+element.nextSibling;                                            // Next node (may be text)
+element.nextElementSibling;                                     // Next element sibling
+element.previousElementSibling;                                 // Previous element sibling
+
+
+// --------------- CLASS & ID MANIPULATION ------------------
+element.classList.add("new-class");                             // Add class
+element.classList.remove("old-class");                          // Remove class
+element.classList.toggle("toggle-class");                       // Toggle class on/off
+element.classList.contains("my-class");                         // Check if class exists
+element.id = "new-id";                                          // Set or change element ID
+
+
+// -------------------- FOCUSING & FORMS --------------------
+element.focus();                                                // Focus on the element (like input box)
+element.blur();                                                 // Remove focus
+formElement.submit();                                           // Submit form via script
+formElement.reset();                                            // Reset form values
+
+
+// ---------------- SCROLLING & POSITION --------------------
+window.scrollTo(0, 100);                                        // Scroll to top: 100px down
+element.scrollIntoView();                                       // Scrolls element into view
+element.offsetTop;                                              // Distance from top of offset parent
+element.offsetHeight;                                           // Height of element including padding
+
+
+
+// -------------------- DOM CONTENT LOADED --------------------
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM is fully loaded");                           // Runs after all HTML is loaded (before images, etc.)
+});
+
+
+
+
+
+
+
+</script>
+</html>

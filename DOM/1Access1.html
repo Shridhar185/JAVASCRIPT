@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DOM Access Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .box {
+      padding: 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="mainTitle">Welcome to DOM</h1>
+ 
+  <p class="item">This is a paragraph with class "item".</p>
+  <p class="item">Another paragraph with class "item".</p>
+
+  <p>This is Accessed by tagname</p>
+
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+
+
+
+  <script>
+    // getElementById
+    // Selects a single element by its unique id.
+    // Returns the element object or null if not found.
+    const title = document.getElementById("mainTitle");
+    title.style.color = "blue";
+
+
+
+
+    // getElementsByClassName
+    // Selects all elements with the given class name.
+    // Returns a live HTMLCollection (array-like but not exactly an array).
+    // Use indexing or loops to access individual elements.
+    const items = document.getElementsByClassName("item");
+    items[0].style.fontWeight = "bold";
+
+
+
+
+    // getElementsByTagName
+    // Selects all elements with the given tag name (like div, p, etc.).
+    // Returns a live HTMLCollection.
+    const paragraphs = document.getElementsByTagName("p");
+    paragraphs[2].style.fontStyle = 'italic';
+
+
+
+
+    // querySelector
+    // Selects the first element that matches a CSS selector.
+    // Very powerful and flexible (supports id, class, tag, attribute selectors).
+    const firstBox = document.querySelector(".box");
+    firstBox.style.backgroundColor = "lightgreen";
+
+
+
+
+    // querySelectorAll
+    // Selects all elements matching a CSS selector.
+    // Returns a static NodeList (not live).
+    const allBoxes = document.querySelectorAll(".box");
+    allBoxes.forEach(box => box.style.border = "2px solid red");
+
+
+
+
+  </script>
+</body>
+</html>

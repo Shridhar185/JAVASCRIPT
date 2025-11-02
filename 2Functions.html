@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Click</button>
+</body>
+<script>
+
+
+
+
+// JavaScript functions are executed in the sequence they are called. Not in the sequence they are defined.
+// By default, JavaScript functions run synchronously, meaning they execute one after another, blocking the next code until they finish.
+// Functions are first-class objects: they can be assigned to variables, passed as arguments, and returned from other functions.
+// JavaScript functions support default parameters, so parameters can have fallback values if not provided.
+// Functions have a built-in length property that shows the number of expected parameters.
+// Self-invoking functions (IIFE) run immediately after they're defined, often used to create private scopes.
+// Functions create a local scope, isolating variables from the outer/global scope.
+// Rest parameters (...args) allow functions to accept an indefinite number of arguments as an array.
+// Spread operator (...) allows expanding an array or object into individual elements.
+// Functions can be created using the Function constructor, though it’s rarely used and not recommended.
+// Nested functions are allowed; a function can be defined inside another function.
+// Closures occur when an inner function remembers and accesses variables from its outer function even after the outer function has executed.
+
+
+
+// In JavaScript, we can declare multiple functions with the same name.
+// However, the last declared function will overwrite any previous ones with the same name.
+
+
+
+
+//**********************************************
+//function constructor-->not recomendded
+//Functions can also be defined with a built-in JavaScript function constructor called Function().
+// const myFunction = new Function("a", "b", "return a * b");
+// let x = myFunction(4, 3);
+//********************************************** 
+
+
+
+
+
+
+
+// Function Declaration ___________________________________________________________
+// Use the keyword 'function' to declare a function
+function greet() {
+    console.log("Hello, welcome!");
+}
+greet();  // Call the function
+
+
+// Hoisted: You can call function before its declaration.
+greetAgain(); // Works!
+function greetAgain() {
+    console.log("Hi!");
+}
+
+
+// Function with Parameters _______________________________________________________
+function greeting(name) {
+    console.log("Hello, " + name + "!");
+}
+greeting("Ram"); // Hello, Ram!
+
+
+// Default Parameters _____________________________________________________________
+function greet(name = "Guest") {
+    console.log("Hello, " + name);
+}
+greet(); // Hello, Guest
+
+
+// Function with Return Value _____________________________________________________
+function add(a, b) {
+    return a + b;
+}
+let sum = add(5, 3); 
+console.log("Sum is:", sum);  // 8
+
+
+// Function Expression  ___________________________________________________________
+// You can also store a function in a variable
+const multiply = function(x, y) {
+    return x * y;
+};
+console.log(multiply(4, 5)); // 20
+
+
+// Arrow Functions (ES6+)__________________________________________________________
+// A modern, shorter way to write functions
+const divide = (a, b) => {
+    return a / b;
+};
+console.log(divide(10, 2)); // 5
+
+// Shorter syntax: single parameter, single expression (implicit return)
+const square = x => x * x;
+console.log(square(6));      // 36
+
+// No parameters
+const sayHi = () => console.log("Hi!");
+sayHi();
+
+    
+// Anonymous Functions (Functions without a name) _________________________________
+setTimeout(function () {
+    console.log("I am anonymous!");
+}, 1000);
+
+
+// Immediately Invoked Function Expression (IIFE) _________________________________
+// Executes immediately after it's defined
+(function () {
+    console.log("I run instantly!");
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Callback Functions
+// A callback function is a function passed as an argument to another function, and it's usually executed later 
+// When you pass a function as an argument, remember not to use parenthesis.
+// To wait for a task to finish (async behavior)
+// To make your functions more flexible (reusable)
+// Callbacks are used to handle asynchronous tasks like timers, events, or API calls.
+// They help manage the order of execution, ensuring some code runs only after another finishes.
+// Excessive use of callbacks can lead to "callback hell," making code hard to read.
+// Modern JavaScript prefers Promises and async/await for cleaner asynchronous code instead of callbacks.
+
+ 
+
+
+
+
+
+
+
+//  Disadvantages of Callbacks
+// Callback hell: Nested callbacks make code hard to read and maintain.
+// Error handling is difficult and errors can be easily missed.
+// Lose control over execution flow (inversion of control).
+// It’s hard to run several tasks one after another using callbacks.
+// Difficult to manage sequence of async operations.
+// No built-in support for chaining or synchronization.
+
+
+
+
+
+
+
+
+
+
+
+// Controlling Execution Order_________________________________________________________
+function step1(next) {
+    console.log("Step 1");
+    next();
+}
+function step2() {
+    console.log("Step 2");
+}
+step1(step2); // Ensures step2 runs only after step1
+
+
+
+
+
+
+
+// Callbacks in Built-in Functions _____________________________________________________
+// SetTimeout and setInterval functions in JavaScript are called automatically once they are invoked.
+// SetTimeout expects a function reference as its first argument, not the result of a function call.
+
+
+// 1. Simple anonymous callback with setTimeout (after 1 second)
+setTimeout(function () {
+    console.log("Executed after 1 second");
+}, 1000);
+
+
+
+// 2. Named function as callback with setTimeout (after 2 seconds)
+function myFunction() {
+    console.log("Message after 2 seconds");
+}
+setTimeout(myFunction, 2000);
+
+
+
+// 3. Custom function accepting a callback to simulate async behavior
+function fetchData(callback) {
+    console.log("Processing data...");
+    setTimeout(callback, 3000);  // Callback runs after 3 seconds
+}
+function fetch() {
+    console.log("Data fetched from server after 3 seconds");
+}
+fetchData(fetch);
+
+
+
+// 4. Chaining async tasks: second callback runs 1 second after first finishes (total 5 seconds)
+function first(callback) {
+    setTimeout(() => {
+        console.log("First task done after 4 seconds");
+        setTimeout(callback, 1000);  // Call callback after 1 more second
+    }, 4000);
+}
+function second() {
+    console.log("Second task done after 5 seconds");
+}
+first(second);
+
+
+
+
+
+
+</script>
+</html>
